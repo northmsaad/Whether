@@ -1,12 +1,19 @@
 import './App.css';
 import Search from './components/search/search';
+import CurrentWeather from './components/current-weather/current-weather';
+import { WEATHER_API_URL, WEATHER_API_KEY } from './api';
 function App() {
-  const handleonSearchChange = (searchData) => {
-    console.log(searchData)
+  const handleOnSearchChange = (searchData) => {
+    const [lat, lon] = searchData.value.split("");
+    const CurrentWeatherFetch = (`${WEATHER_API_URL}/weatherlat-${lat}&lon-${lon}&appid=${WEATHER_API_KEY}`);
+    const forecastFetch = (`${WEATHER_API_URL}/weatherlat-${lat}&lon-${lon}&appid=${WEATHER_API_KEY}`);
+
+    api.openweathermap.org / data / 2.5 / forecast ? lat = { lat } & lon={ lon }& appid={API key }
   }
   return (
     <div className="container">
-      <Search onSearchChange={handleonSearchChange} />
+      <Search onSearchChange={handleOnSearchChange} />
+      <CurrentWeather />
     </div>
   );
 }

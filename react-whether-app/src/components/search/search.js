@@ -7,7 +7,7 @@ const Search = ({ onSearchChange }) => {
 
     const loadOptions = (inputValue) => {
         return fetch(
-            `${GEO_API_URL}/cities?minPopulation=1000000&namePrefix=${inputValue}`, geoApiOptions
+            `${GEO_API_URL}/cities?minPopulation=100000&namePrefix=${inputValue}`, geoApiOptions
         )
 
             .then((response) => response.json())
@@ -23,7 +23,7 @@ const Search = ({ onSearchChange }) => {
             })
             .catch((err) => console.error(err));
     };
-    const handleonChange = (searchData) => {
+    const handleOnChange = (searchData) => {
         setSearch(searchData);
         onSearchChange(searchData)
     };
@@ -32,7 +32,7 @@ const Search = ({ onSearchChange }) => {
             placeholder="Search for city"
             debounceTimeout={600}
             value={search}
-            onChange={handleonChange}
+            onChange={handleOnChange}
             loadOptions={loadOptions}
         />
     )
